@@ -47,6 +47,7 @@ void AVRCharacterPawn::BeginPlay()
 {
     Super::BeginPlay();
 
+    WidgetComponent->SetVisibility(false);
     SetupVREnvironment();
     SetupVRHands();
 }
@@ -81,7 +82,7 @@ void AVRCharacterPawn::DisplayWidget(bool bShowWidget)
     {
         if (UVRMenuWidget *MenuWidget = Cast<UVRMenuWidget>(UserWidget))
         {
-            WidgetComponent->ToggleVisibility();
+            WidgetComponent->SetVisibility(bShowWidget);
 
             if (bShowWidget)
             {

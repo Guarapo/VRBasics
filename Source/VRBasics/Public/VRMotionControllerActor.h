@@ -58,6 +58,9 @@ public:
     UFUNCTION(BlueprintCallable)
     void FinishTeleportDestination();
 
+    UFUNCTION(BlueprintCallable)
+    void SetGripType(EGripType Grip);
+
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "VRMotionControllerActor | Animation")
     EGripType GripType;
 
@@ -100,7 +103,7 @@ private:
 
     UFUNCTION()
     void FillSplinePoints(TArray<FVector> PathLocationArray);
-    
+
     UFUNCTION()
     void HandleFadeCamera(FLinearColor FromAlpha, FLinearColor ToAlpha);
 

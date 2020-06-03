@@ -17,9 +17,8 @@
 #include "NavigationSystem.h"
 
 #if PLATFORM_ANDROID
-    #include "OculusFunctionLibrary.h"
+#include "OculusFunctionLibrary.h"
 #endif
-
 
 //MARK: - Constants -
 
@@ -104,7 +103,7 @@ void AVRMotionControllerActor::TeleportDestination()
                                         MaxSimTime,
                                         ECollisionChannel::ECC_Visibility,
                                         this);
-    
+
     Params.bTraceComplex = true;
     Params.DrawDebugType = EDrawDebugTrace::ForOneFrame;
 
@@ -151,6 +150,11 @@ void AVRMotionControllerActor::FinishTeleportDestination()
         TeleportMesh->SetVisibility(false);
         EnableFaceOutBeforeTeleport();
     }
+}
+
+void AVRMotionControllerActor::SetGripType(EGripType Grip)
+{
+    GripType = Grip;
 }
 
 //MARK: - Private Methods -
@@ -209,7 +213,7 @@ void AVRMotionControllerActor::FillSplinePoints(TArray<FVector> PathLocationArra
 
 void AVRMotionControllerActor::HandleFadeCamera(FLinearColor FromAlpha, FLinearColor ToAlpha)
 {
-    #if PLATFORM_ANDROID
-        UOculusFunctionLibrary::SetColorScaleAndOffset(FromAlpha, ToAlpha, true);
-    #endif
+#if PLATFORM_ANDROID
+    UOculusFunctionLibrary::SetColorScaleAndOffset(FromAlpha, ToAlpha, true);
+#endif
 }
