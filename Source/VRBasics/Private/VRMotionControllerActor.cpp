@@ -5,7 +5,7 @@
 // Local Includes
 #include "VRCharacterPawn.h"
 // UE4 Includes
-#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Components/SceneComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/SphereComponent.h"
@@ -15,6 +15,11 @@
 #include "Kismet/GameplayStatics.h"
 #include "MotionControllerComponent.h"
 #include "NavigationSystem.h"
+
+#if PLATFORM_ANDROID
+    #include "OculusFunctionLibrary.h"
+#endif
+
 
 //MARK: - Constants -
 
@@ -99,6 +104,9 @@ void AVRMotionControllerActor::TeleportDestination()
                                         MaxSimTime,
                                         ECollisionChannel::ECC_Visibility,
                                         this);
+    
+    Params.bTraceComplex = true;
+    Params.DrawDebugType = EDrawDebugTrace::ForOneFrame;
 
     FPredictProjectilePathResult Result;
     bool bHasHit = UGameplayStatics::PredictProjectilePath(this, Params, Result);
@@ -137,9 +145,12 @@ void AVRMotionControllerActor::StartTeleportDestination()
 
 void AVRMotionControllerActor::FinishTeleportDestination()
 {
-    SetActorTickEnabled(false);
-    TeleportMesh->SetVisibility(false);
-    EnableFaceOutBeforeTeleport();
+    if (ParentPawn && ParentPawn->GetMovementType() == EVRMovementType::Teleport)
+    {
+        SetActorTickEnabled(false);
+        TeleportMesh->SetVisibility(false);
+        EnableFaceOutBeforeTeleport();
+    }
 }
 
 //MARK: - Private Methods -
@@ -167,6 +178,7 @@ void AVRMotionControllerActor::EnableFaceOutBeforeTeleport()
 
     if (!bIsFadeOutTimerActive)
     {
+        HandleFadeCamera(FLinearColor(0, 0, 0, 0), FLinearColor(1, 1, 1, 1));
         GetWorldTimerManager().SetTimer(FadeInHandler, this, &AVRMotionControllerActor::EnableFaceInAfterTeleport, TeleportFadeInDelayTime, false);
     }
 }
@@ -175,7 +187,10 @@ void AVRMotionControllerActor::EnableFaceInAfterTeleport()
 {
     if (ParentPawn)
     {
-        ParentPawn->SetActorLocation(TeleportMesh->GetComponentLocation());
+        FVector TeleportPosition = TeleportMesh->GetComponentLocation();
+        TeleportPosition += ParentPawn->GetCapsuleComponent()->GetScaledCapsuleHalfHeight() * ParentPawn->GetActorUpVector();
+        ParentPawn->SetActorLocation(TeleportPosition);
+        HandleFadeCamera(FLinearColor(1, 1, 1, 1), FLinearColor(0, 0, 0, 0));
     }
 }
 
@@ -190,4 +205,11 @@ void AVRMotionControllerActor::FillSplinePoints(TArray<FVector> PathLocationArra
     }
 
     SplineComponent->UpdateSpline();
+}
+
+void AVRMotionControllerActor::HandleFadeCamera(FLinearColor FromAlpha, FLinearColor ToAlpha)
+{
+    #if PLATFORM_ANDROID
+        UOculusFunctionLibrary::SetColorScaleAndOffset(FromAlpha, ToAlpha, true);
+    #endif
 }

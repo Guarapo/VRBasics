@@ -34,6 +34,11 @@ public:
 
     /** Returns Camera Component  **/
     FORCEINLINE UCameraComponent *GetCameraComponent() const { return VRCameraComponent; }
+    
+    /** Returns Capsule Component  **/
+    FORCEINLINE UCapsuleComponent *GetCapsuleComponent() const { return CapsuleComponent; }
+    
+    /** Returns movement type  **/
     EVRMovementType GetMovementType() const { return MovementType; }
 
     virtual void Tick(float DeltaTime) override;

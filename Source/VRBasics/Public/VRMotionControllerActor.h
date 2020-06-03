@@ -100,6 +100,9 @@ private:
 
     UFUNCTION()
     void FillSplinePoints(TArray<FVector> PathLocationArray);
+    
+    UFUNCTION()
+    void HandleFadeCamera(FLinearColor FromAlpha, FLinearColor ToAlpha);
 
     UFUNCTION()
     FName GetHandNameByType(EMotionHandController MotionHandControllerType);
