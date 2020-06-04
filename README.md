@@ -35,15 +35,15 @@ All the gameplay was made on C++ scripting, the blueprints is used only on the U
 - Oculus Plugin: https://developer.oculus.com/documentation/unreal/unreal-getting-started-guide/
 
 
-## Gameplay
+## Gameplay Demo
 
 #### Teleport
 
-TBD
+![Jun-03-2020 20-06-32](https://user-images.githubusercontent.com/1762283/83703643-bdd9b500-a5d5-11ea-9030-0a299ec7b9d2.gif)
 
 #### Joystick
 
-TBD
+![Jun-03-2020 20-04-50](https://user-images.githubusercontent.com/1762283/83703535-879c3580-a5d5-11ea-9ee2-dd0e2f9c36e5.gif)
 
 ## Folder Structure
 
