@@ -5,16 +5,22 @@ Simple template game to make a locomotion movement on Oculus Quest
 
 # Version
 
-Unreal Engine 4.24.3
+Unreal Engine 4 - 4.24.3
 
 # Style and Code Standard
 
-https://github.com/Allar/ue4-style-guide#0.1
-https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html#exampleformatting
+- https://github.com/Allar/ue4-style-guide#0.1
+- https://docs.unrealengine.com/en-US/Programming/Development/CodingStandard/index.html#exampleformatting
 
 ## Inputs
 
-TBD
+![Screen Recording 2020-04-11 at 4 37 32 PM_2](https://i0.wp.com/vrespawn.com/wp-content/uploads/2019/05/Oculus-touch-controllers-1.png?w=696&ssl=1)
+
+- **Move joystick mode:** Uses the left or right thumbsticks
+- **Move Teleport mode:** Press thumbsticks and after release it, the character will be teleported
+- **Open 3D Widget:** Use the Right Controller and press buttons **A** or **B**
+- **Interact Widget:** Press Right Trigger
+
 
 ## How to Install the game
 Install via SideQuest https://sidequestvr.com/setup-howto 
