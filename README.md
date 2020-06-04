@@ -1,7 +1,7 @@
 # VRBasics
 VR Basic Movement 
 
-Simple template game to make a locomotion movement on Oculus Quest
+Simple template game to make a locomotion movement on Oculus Quest.
 
 # Version
 
@@ -44,6 +44,11 @@ All the gameplay was made on C++ scripting, the blueprints is used only on the U
 #### Joystick
 
 ![Jun-03-2020 20-04-50](https://user-images.githubusercontent.com/1762283/83703535-879c3580-a5d5-11ea-9ee2-dd0e2f9c36e5.gif)
+
+## To improve
+
+- Create a better Fade in/out after teleport
+- Create a post processing that help vr sickness after use the joystick.
 
 ## Folder Structure
 
