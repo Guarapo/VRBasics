@@ -23,15 +23,27 @@ Unreal Engine 4 - 4.24.3
 
 
 ## How to Install the game
-Install via SideQuest https://sidequestvr.com/setup-howto 
+- Download the apk file from here https://github.com/ingridwarrior2901/VRBasics/releases/download/v0.1/Android_ASTC.zip
+- And Finally Install it via SideQuest https://sidequestvr.com/setup-howto 
 
 ## Game Architecture
 
-All the gameplay was made on C++, only it uses blueprints on the UI and inputs that call game logic.
+All the gameplay was made on C++ scripting, the blueprints is used only on the UI and inputs that call game logic.
 
 ## Dependencies
 
 - Oculus Plugin: https://developer.oculus.com/documentation/unreal/unreal-getting-started-guide/
+
+
+## Gameplay
+
+#### Teleport
+
+TBD
+
+#### Joystick
+
+TBD
 
 ## Folder Structure
 
