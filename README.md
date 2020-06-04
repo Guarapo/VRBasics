@@ -28,7 +28,7 @@ Unreal Engine 4 - 4.24.3
 
 ## Game Architecture
 
-All the gameplay was made on C++ scripting, the blueprints is used only on the UI and inputs that call game logic.
+All the gameplay was made on C++ scripting, the blueprints are being used only on the UI and inputs that call game logic.
 
 ## Dependencies
 
@@ -47,8 +47,8 @@ All the gameplay was made on C++ scripting, the blueprints is used only on the U
 
 ## To improve
 
-- Create a better Fade in/out after teleport
-- Create a post processing that help vr sickness after use the joystick.
+- Add a better Fade in/out after teleport
+- Add post-processing that prevents VR sickness after using the joystick.
 
 ## Folder Structure
 
